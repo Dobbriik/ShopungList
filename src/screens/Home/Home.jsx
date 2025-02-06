@@ -6,8 +6,10 @@ import { postShoppingList } from '../../shop/shoppingListSlice'
 import { Sparkle } from 'lucide-react'
 import { Rocket } from 'lucide-react'
 import Container from '../../shared/components/container/Container'
+import { useTranslation } from 'react-i18next'
 
 function Home() {
+	const { t } = useTranslation()
 	const [text, setText] = useState('')
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -35,9 +37,9 @@ function Home() {
 		<div className={style.container}>
 			<Container>
 				<div className={style.create}>
-					<h1 className={style.headings}>Создайте свой список покупок</h1>
+					<h1 className={style.headings}>{t('Create your shopping list')}</h1>
 					<p className={style.paragraph}>
-						Давайте сделаем покупки проще и организованнее!
+						{t("Let's make shopping easier and more organized!")}
 						<Sparkle className={style.star} />
 					</p>
 				</div>
@@ -46,10 +48,10 @@ function Home() {
 					onChange={handleChange}
 					value={text}
 					onKeyPress={handleKeyPress}
-					placeholder='Введите ваш список покупок...'
+					placeholder={t('Enter your shopping list...')}
 				/>
 				<button className={style.btn} onClick={handleClick}>
-					Сгенерировать список
+					{t('Generate a list')}
 					<span>
 						{' '}
 						<Rocket />

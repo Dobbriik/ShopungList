@@ -27,6 +27,7 @@
 }
 
 .textarea {
+	field-sizing: content;
 	transition: outline 0.3s ease;
 	border: 2px solid #8b33ff50;
 	border-radius: 7px;
@@ -48,6 +49,8 @@
 }
 
 .btn {
+	transition: transform 0.5s ease;
+	cursor: pointer;
 	border: none;
 	border-radius: 10px;
 	background: linear-gradient(-45deg, #f916db, #9333ea);
@@ -55,4 +58,13 @@
 	color: #ffffff;
 	font-weight: 600;
 	font-size: 1.3rem;
+}
+
+.btn:hover {
+	background: linear-gradient(-45deg, #f830dd, #a251ee);
+}
+
+.btn:active {
+	transform: scale(95%);
+	background: linear-gradient(-45deg, #d410ba, #671faa);
 }

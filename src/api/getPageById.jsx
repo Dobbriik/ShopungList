@@ -11,6 +11,7 @@ export const getPageById = async id => {
 		const result = {
 			idPage: response.data.id,
 			categories: [],
+			createdAt: response.data.createdAt,
 		}
 
 		for (const element of list) {

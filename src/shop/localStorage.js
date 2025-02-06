@@ -9,7 +9,9 @@ export const loadState = () => {
 		const allItems = []
 		for (let i = 0; i < localStorage.length; i++) {
 			let key = localStorage.key(i)
-			allItems.push(JSON.parse(localStorage.getItem(key)))
+			if (key !== 'i18nextLng') {
+				allItems.push(JSON.parse(localStorage.getItem(key)))
+			}
 		}
 		if (allItems.length === 0) {
 			return undefined

@@ -13,8 +13,10 @@ import { useRef, useState } from 'react'
 import SkeletonCard from '../../shared/components/SkeletonCard/SkeletonCard'
 import useFormattedDate from '../../shared/hooks/useFormattedDate'
 import { getShoppingList, postShoppingList } from '../../shop/shoppingListSlice'
+import { useTranslation } from 'react-i18next'
 
 function List() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const navigateList = useNavigate()
 	const navigate = useNavigateHome()
@@ -66,7 +68,7 @@ function List() {
 			<div className={style.header}>
 				<div className={style.shop}>
 					<ShoppingCart />
-					<h3 className={style.title}>Список покупок</h3>
+					<h3 className={style.title}>{t('Shopping list')}</h3>
 					<h3 className={style.date}>{formattedDate}</h3>
 				</div>
 				<div>
