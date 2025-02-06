@@ -1,9 +1,10 @@
 import api from './api'
+import filterDefault from './filterDefault'
 
 export const createPage = async prompt => {
 	try {
 		const response = await api.post('/pages', { prompt })
-		const list = response.data.categories.slice(0, -1)
+		const list = filterDefault(response.data.categories)
 		console.log(response)
 
 		const result = {
@@ -18,8 +19,7 @@ export const createPage = async prompt => {
 				{ category: element.name, items: getItems(element.items) },
 			]
 		}
-		
-		localStorage.setItem(response.data.id, JSON.stringify(result))
+
 		return result
 	} catch (error) {
 		console.error('Ошибка при создании страницы:', error)

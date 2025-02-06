@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Card from '../../shared/components/Card/Card'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useNavigateHome from '../../shared/hooks/useNavigateHome'
 import useFindPageId from '../../shared/hooks/useFindPageId'
 import Container from '../../shared/components/container/Container'
@@ -11,8 +11,12 @@ import moment from 'moment'
 import useCheckLocale from '../../shared/hooks/useCheckLocale'
 import { useRef, useState } from 'react'
 import SkeletonCard from '../../shared/components/SkeletonCard/SkeletonCard'
+import useFormattedDate from '../../shared/hooks/useFormattedDate'
+import { getShoppingList, postShoppingList } from '../../shop/shoppingListSlice'
 
 function List() {
+	const dispatch = useDispatch()
+	const navigateList = useNavigate()
 	const navigate = useNavigateHome()
 	const [forStore, setForStore] = useState()
 	const [copied, setCopied] = useState('default')
@@ -24,22 +28,26 @@ function List() {
 	const currentUrl = window.location.href
 	let content = 'ошибка'
 	if (list.current) {
+		console.log(list.current)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} />
 		))
 	} else if (hasValue) {
 		list.current = result
+		console.log(hasValue)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} />
 		))
+	} else {
+		dispatch(getShoppingList(id))
+		navigateList('/List')
 	}
 	if (!list.current) {
 		return <SkeletonCard>{'ошибка'}</SkeletonCard>
 	}
 	const component = list.current
-	const formattedDate = moment(component.createdAt).format(
-		'DD.MM.YYYY HH:mm:ss'
-	)
+	const formattedDate = useFormattedDate(component.createdAt)
+
 	const handleCopy = async () => {
 		try {
 			await navigator.clipboard.writeText(currentUrl)
@@ -52,6 +60,7 @@ function List() {
 		}
 	}
 
+	console.log('content', content)
 	return (
 		<Container className={style.container}>
 			<div className={style.header}>
@@ -69,13 +78,6 @@ function List() {
 				</div>
 			</div>
 			<div className={style.list}>{content}</div>
-			<button
-				onClick={() => {
-					console.log('list', component)
-				}}
-			>
-				сохранить
-			</button>
 		</Container>
 	)
 }

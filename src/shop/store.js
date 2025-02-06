@@ -1,39 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import shoppingListReducer from './shoppingListSlice'
+import { loadState, saveState } from './localStorage'
+import { throttle } from 'lodash'
 
-// const loadState = () => {
-// 	try {
-// 		const serializedState = localStorage.getItem('reduxState')
-// 		if (serializedState === null) {
-// 			return undefined
-// 		}
-// 		return JSON.parse(serializedState)
-// 	} catch (err) {
-// 		console.error('Failed to load state:', err)
-// 		return undefined
-// 	}
-// }
-
-// const saveState = state => {
-// 	try {
-// 		const serializedState = JSON.stringify(state)
-// 		localStorage.setItem('reduxState', serializedState)
-// 	} catch (err) {
-// 		console.error('Failed to save state:', err)
-// 	}
-// }
-
-// const preloadedState = loadState()
+const preloadedState = loadState()
 
 export const store = configureStore({
 	reducer: {
 		shoppingList: shoppingListReducer,
 	},
-	// preloadedState,
+	preloadedState,
 })
 
-// store.subscribe(
-//   throttle(() => {
-//     saveState(store.getState());
-//   }, 1000)
-// );
+store.subscribe(
+	throttle(() => {
+		saveState(store.getState())
+	}, 1000)
+)
