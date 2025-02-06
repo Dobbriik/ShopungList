@@ -1,0 +1,54 @@
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-self: stretch;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+}
+
+.btn {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
+.date {
+	margin-bottom: -5px;
+	font-weight: normal;
+	font-size: 0.7rem;
+	line-height: 11px;
+}
+
+.title {
+	line-height: 1;
+}
+
+.shop {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.default {
+	color: black;
+}
+
+.copied {
+	transform: scale(1.05);
+	color: green;
+}
+.error {
+	transform: scale(0.95);
+	color: #ff0000;
+}
+
+.copy {
+	transition: all 0.2s ease;
+}

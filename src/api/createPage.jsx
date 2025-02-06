@@ -9,6 +9,7 @@ export const createPage = async prompt => {
 		const result = {
 			idPage: response.data.id,
 			categories: [],
+			createdAt: response.data.createdAt,
 		}
 
 		for (const element of list) {
@@ -17,6 +18,8 @@ export const createPage = async prompt => {
 				{ category: element.name, items: getItems(element.items) },
 			]
 		}
+		
+		localStorage.setItem(response.data.id, JSON.stringify(result))
 		return result
 	} catch (error) {
 		console.error('Ошибка при создании страницы:', error)

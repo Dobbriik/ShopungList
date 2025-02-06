@@ -18,11 +18,17 @@ export default [
 			},
 		},
 		settings: { react: { version: '18.3' } },
-		plugins: {
-			react,
-			'react-hooks': reactHooks,
-			'react-refresh': reactRefresh,
-		},
+		extends: [
+			'eslint:recommended',
+			'plugin:prettier/recommended', // Добавляет правила Prettier в ESLint
+		],
+		plugins: [
+			{
+				react,
+				'react-hooks': reactHooks,
+				'react-refresh': reactRefresh,
+			},
+		],
 		rules: {
 			...js.configs.recommended.rules,
 			...react.configs.recommended.rules,

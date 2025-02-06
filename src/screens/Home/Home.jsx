@@ -5,6 +5,7 @@ import style from './Home.module.css'
 import { postShoppingList } from '../../shop/shoppingListSlice'
 import { Sparkle } from 'lucide-react'
 import { Rocket } from 'lucide-react'
+import Container from '../../shared/components/container/Container'
 
 function Home() {
 	const [text, setText] = useState('')
@@ -20,6 +21,11 @@ function Home() {
 		setText('')
 		navigate('/List')
 	}
+	const handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			handleClick()
+		}
+	}
 
 	const handleChange = event => {
 		setText(event.target.value)
@@ -27,26 +33,29 @@ function Home() {
 
 	return (
 		<div className={style.container}>
-			<div className={style.create}>
-				<h1 className={style.headings}>Создайте свой список покупок</h1>
-				<p className={style.paragraph}>
-					Давайте сделаем покупки проще и организованнее!
-					<Sparkle className={style.star} />
-				</p>
-			</div>
-			<textarea
-				className={style.textarea}
-				onChange={handleChange}
-				value={text}
-				placeholder='Введите ваш список покупок...'
-			></textarea>
-			<button className={style.btn} onClick={handleClick}>
-				Сгенерировать список
-				<span>
-					{' '}
-					<Rocket />
-				</span>
-			</button>
+			<Container>
+				<div className={style.create}>
+					<h1 className={style.headings}>Создайте свой список покупок</h1>
+					<p className={style.paragraph}>
+						Давайте сделаем покупки проще и организованнее!
+						<Sparkle className={style.star} />
+					</p>
+				</div>
+				<textarea
+					className={style.textarea}
+					onChange={handleChange}
+					value={text}
+					onKeyPress={handleKeyPress}
+					placeholder='Введите ваш список покупок...'
+				/>
+				<button className={style.btn} onClick={handleClick}>
+					Сгенерировать список
+					<span>
+						{' '}
+						<Rocket />
+					</span>
+				</button>
+			</Container>
 		</div>
 	)
 }

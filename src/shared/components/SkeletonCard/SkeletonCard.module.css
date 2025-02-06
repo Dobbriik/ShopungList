@@ -1,0 +1,33 @@
+.skeleton {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	gap: 10px;
+}
+
+.hed {
+	max-width: 130px;
+}
+
+.par {
+	font-size: 34px;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-self: stretch;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+}
+
+.btn {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
