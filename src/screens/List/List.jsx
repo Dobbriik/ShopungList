@@ -14,6 +14,7 @@ import SkeletonCard from '../../shared/components/SkeletonCard/SkeletonCard'
 
 function List() {
 	const navigate = useNavigateHome()
+	const [forStore, setForStore] = useState()
 	const [copied, setCopied] = useState('default')
 	const { id } = useParams()
 	const { hasValue, isLoading, error, result } = useCheckLocale(id)
@@ -23,7 +24,7 @@ function List() {
 	const currentUrl = window.location.href
 	let content = 'ошибка'
 	if (list.current) {
-		content = list.categories.map((item, index) => (
+		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} />
 		))
 	} else if (hasValue) {
@@ -70,7 +71,7 @@ function List() {
 			<div className={style.list}>{content}</div>
 			<button
 				onClick={() => {
-					console.log('list', data)
+					console.log('list', component)
 				}}
 			>
 				сохранить
