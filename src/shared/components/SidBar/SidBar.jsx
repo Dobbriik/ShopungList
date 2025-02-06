@@ -35,6 +35,7 @@ function SidBar() {
 	}
 
 	const handleClickOutside = event => {
+		console.log('dropdownRef.current', dropdownRef.current)
 		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
 			setIsOpen(false)
 		}
@@ -54,9 +55,12 @@ function SidBar() {
 			</button>
 			{
 				<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
-					<ul className={`${styles.dropdownMenu} `} ref={dropdownRef}>
+					<ul
+						className={`${styles.dropdownMenu} ${isOpen ? styles.visibleMenu : ''}`}
+					>
 						{options.map(({ idPage, requestId }) => (
 							<li
+								ref={dropdownRef}
 								key={idPage}
 								className={styles.dropdownOption}
 								onClick={() => handleOptionClick(idPage, requestId)}

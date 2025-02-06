@@ -12,7 +12,7 @@
 }
 
 .dropdownToggle {
-	transition: all 0.5s ease-out;
+	transition: all 0.3s ease-out;
 	cursor: pointer;
 	border: none;
 	border-radius: 10px;
@@ -35,15 +35,14 @@
 	top: 100%;
 	left: 0px;
 	grid-template-rows: 0fr; /* Начальное состояние - свёрнуто */
-	opacity: 0;
+	opacity: 1;
 	z-index: 1;
-	transition: grid-template-rows 0.4s ease-out;
+	transition: all 0.3s ease-out;
 }
 
 .dropdownMenu {
-	transition: all 0.2s ease-out;
+	transition: all 0.3s ease-out;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-	border: 1px solid #ccc;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 	background-color: white;
@@ -54,6 +53,10 @@
 .visible {
 	grid-template-rows: 2fr;
 	opacity: 1;
+	border: none;
+}
+
+.visibleMenu {
 }
 
 .dropdownOption {
