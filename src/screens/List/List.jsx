@@ -30,13 +30,11 @@ function List() {
 	const currentUrl = window.location.href
 	let content = 'ошибка'
 	if (list.current) {
-		console.log(list.current)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} />
 		))
 	} else if (hasValue) {
 		list.current = result
-		console.log(hasValue)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} />
 		))
@@ -62,7 +60,6 @@ function List() {
 		}
 	}
 
-	console.log('content', content)
 	return (
 		<Container className={style.container}>
 			<div className={style.header}>

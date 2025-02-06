@@ -1,27 +1,28 @@
 import { useSelector } from 'react-redux'
 import useFormattedDate from '../../hooks/useFormattedDate'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import styles from './SaidBar.module.css'
 import { useEffect, useRef, useState } from 'react'
 import useStartsWithLis from '../../hooks/useStartsWithLis'
+import { useTranslation } from 'react-i18next'
 
 function SidBar() {
+	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
+	const { id } = useParams()
 	const checkPath = useStartsWithLis(pathname)
-	console.log(checkPath)
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOption, setSelectedOption] = useState(null)
 	const options = useSelector(state => state.shoppingList.items)
-	console.log(options)
 	const dropdownRef = useRef(null)
+	const dropdownRefBtn = useRef(null)
 	const format = useFormattedDate
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen)
 	}
 	useEffect(() => {
-		console.log('selectedOption', selectedOption)
 		if (!checkPath) {
 			setSelectedOption(null)
 		}
@@ -30,13 +31,16 @@ function SidBar() {
 	const handleOptionClick = (idPage, requestId) => {
 		setSelectedOption(format(requestId))
 		setIsOpen(false)
-		console.log('idPage', idPage)
 		navigate(`/List/${idPage}`)
 	}
 
 	const handleClickOutside = event => {
-		console.log('dropdownRef.current', dropdownRef.current)
-		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+		if (
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target) &&
+			dropdownRefBtn.current &&
+			!dropdownRefBtn.current.contains(event.target)
+		) {
 			setIsOpen(false)
 		}
 	}
@@ -50,8 +54,12 @@ function SidBar() {
 
 	return (
 		<div className={styles.dropdown}>
-			<button className={styles.dropdownToggle} onClick={toggleDropdown}>
-				{checkPath ? selectedOption || 'Select an option' : 'Select an option'}
+			<button
+				ref={dropdownRefBtn}
+				className={`${styles.dropdownToggle} ${isOpen ? styles.dropdownToggleActive : ''}`}
+				onClick={toggleDropdown}
+			>
+				{checkPath ? selectedOption || t('Select Cart') : t('Select Cart')}
 			</button>
 			{
 				<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
@@ -62,7 +70,8 @@ function SidBar() {
 							<li
 								ref={dropdownRef}
 								key={idPage}
-								className={styles.dropdownOption}
+								id={idPage}
+								className={`${styles.dropdownOption} ${id == idPage ? styles.target : ''}`}
 								onClick={() => handleOptionClick(idPage, requestId)}
 							>
 								{format(requestId)}
