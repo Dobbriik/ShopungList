@@ -5,16 +5,41 @@ import Auth from '../screens/Auth/Auth'
 import Register from '../screens/Register/Register'
 import List from '../screens/List/List'
 import ListSkeleton from '../screens/List/ListSkeleton'
+import SidBar from '../shared/components/SidBar/SidBar'
 
 function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Layout />}>
-				<Route index element={<Home />} />
+				<Route
+					index
+					element={
+						<>
+							<SidBar />
+							<Home />
+						</>
+					}
+				></Route>
 				<Route path='/Auth' element={<Auth />} />
 				<Route path='/Register' element={<Register />} />
-				<Route path='/List' element={<ListSkeleton />} />
-				<Route path='/List/:id' element={<List />} />
+				<Route
+					path='/List'
+					element={
+						<>
+							<SidBar />
+							<ListSkeleton />
+						</>
+					}
+				></Route>
+				<Route
+					path='/List/:id'
+					element={
+						<>
+							<SidBar />
+							<List />
+						</>
+					}
+				></Route>
 			</Route>
 		</Routes>
 	)

@@ -5,7 +5,7 @@ import styles from './SaidBar.module.css'
 import { useEffect, useRef, useState } from 'react'
 import useStartsWithLis from '../../hooks/useStartsWithLis'
 
-function SaidBar() {
+function SidBar() {
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
 	const checkPath = useStartsWithLis(pathname)
@@ -53,23 +53,22 @@ function SaidBar() {
 				{checkPath ? selectedOption || 'Select an option' : 'Select an option'}
 			</button>
 			{
-				<ul
-					className={`${styles.dropdownMenu} ${isOpen ? styles.visible : ''}`}
-					ref={dropdownRef}
-				>
-					{options.map(({ idPage, requestId }) => (
-						<li
-							key={idPage}
-							className={styles.dropdownOption}
-							onClick={() => handleOptionClick(idPage, requestId)}
-						>
-							{format(requestId)}
-						</li>
-					))}
-				</ul>
+				<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
+					<ul className={`${styles.dropdownMenu} `} ref={dropdownRef}>
+						{options.map(({ idPage, requestId }) => (
+							<li
+								key={idPage}
+								className={styles.dropdownOption}
+								onClick={() => handleOptionClick(idPage, requestId)}
+							>
+								{format(requestId)}
+							</li>
+						))}
+					</ul>
+				</div>
 			}
 		</div>
 	)
 }
 
-export default SaidBar
+export default SidBar
