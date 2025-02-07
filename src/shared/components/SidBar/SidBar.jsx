@@ -23,6 +23,7 @@ function SidBar() {
 		setIsOpen(!isOpen)
 	}
 	useEffect(() => {
+		console.log('selectedOption', selectedOption)
 		if (!checkPath) {
 			setSelectedOption(null)
 		}

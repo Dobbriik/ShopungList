@@ -24,6 +24,7 @@ function List() {
 	const currentUrl = window.location.href
 	let content = 'ошибка'
 	if (list.current) {
+		console.log('list.current', list.current)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} idPage={id} />
 		))

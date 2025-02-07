@@ -54,7 +54,7 @@ function Card({ data, idPage }) {
 		<div className={style.container}>
 			<h3 className={style.category}>{data.category}</h3>
 			<ul>
-				{isChecked.items.map(item => (
+				{data.items.map(item => (
 					<li
 						key={item.id}
 						id={item.id}
@@ -67,7 +67,6 @@ function Card({ data, idPage }) {
 						onMouseLeave={() => setIsHovered(false)}
 					>
 						<input
-							key={item.id}
 							type='checkbox'
 							checked={item.isBought}
 							onChange={() => {
