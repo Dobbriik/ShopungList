@@ -66,10 +66,10 @@ function SidBar() {
 					<ul
 						className={`${styles.dropdownMenu} ${isOpen ? styles.visibleMenu : ''}`}
 					>
-						{options.map(({ idPage, requestId }) => (
+						{options.map(({ idPage, requestId }, i) => (
 							<li
 								ref={dropdownRef}
-								key={idPage}
+								key={i}
 								id={idPage}
 								className={`${styles.dropdownOption} ${id == idPage ? styles.target : ''}`}
 								onClick={() => handleOptionClick(idPage, requestId)}

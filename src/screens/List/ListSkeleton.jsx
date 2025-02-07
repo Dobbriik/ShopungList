@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import style from './List.module.css'
 import SkeletonCard from '../../shared/components/SkeletonCard/SkeletonCard'
 
 function ListSkeleton() {

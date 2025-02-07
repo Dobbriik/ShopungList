@@ -21,7 +21,7 @@ function Navbar() {
 								{t('Shopping list')}
 							</Link>
 						</li>
-						<li>
+						<li className={styles.language}>
 							<button onClick={() => changeLanguage('en')}>en</button>
 							<button onClick={() => changeLanguage('ru')}>ru</button>
 						</li>

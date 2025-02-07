@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createPage } from '../api/createPage.jsx'
 import { getPageById } from '../api/getPageById.jsx'
+import { updateStatus } from '../api/updateStatus.jsx'
 
 export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
@@ -16,6 +17,13 @@ export const getShoppingList = createAsyncThunk(
 		console.log('getShoppingList', id)
 		const data = await getPageById(id)
 		return { ...data, requestId: Date.now() }
+	}
+)
+
+export const postUpdateStatus = createAsyncThunk(
+	'shoppingList/postUpdateStatus',
+	async id => {
+		const data = await updateStatus(id)
 	}
 )
 
@@ -35,8 +43,26 @@ const shoppingListSlice = createSlice({
 			state.items = state.items.filter((_, i) => i !== action.payload)
 		},
 		changeItem: (state, action) => {
-			const { index, newItem } = action.payload
-			state.items[index] = newItem
+			const { idPage, id } = action.payload
+			let changedItem = {}
+			for (const items of state.items) {
+				if (items.idPage === idPage) {
+					changedItem = items
+					let forChangeCategory = []
+					for (const categories of items.categories) {
+						const items = categories.items.map(i => {
+							return i.id === id ? { ...i, isBought: !i.isBought } : i
+						})
+						console.log('items', items)
+						let newCategories = { ...categories, items: items }
+						forChangeCategory.push(newCategories)
+					}
+					changedItem.categories = forChangeCategory
+				}
+			}
+			state.items = state.items.map(i => {
+				return i.idPage == idPage ? changedItem : i
+			})
 		},
 	},
 	extraReducers: builder => {

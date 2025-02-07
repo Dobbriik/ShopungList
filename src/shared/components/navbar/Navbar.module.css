@@ -20,6 +20,7 @@
 }
 
 .navig {
+	position: relative;
 	box-shadow: 0 11px 15px -8px #35353547;
 	background-color: rgb(147 51 234 / 1);
 	padding-top: 2px;
@@ -51,4 +52,10 @@
 a {
 	color: rgb(255 255 255 / 1);
 	text-decoration: none;
+}
+
+.language {
+	position: absolute;
+	top: 30%;
+	right: 40px;
 }

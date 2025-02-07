@@ -1,4 +1,4 @@
-import api from './api'
+import api from './api.jsx'
 import filterDefault from './filterDefault.jsx'
 export const getPageById = async id => {
 	function check(value) {
