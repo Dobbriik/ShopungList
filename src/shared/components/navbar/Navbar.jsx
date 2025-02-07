@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 
 function Navbar() {
 	const { t, i18n } = useTranslation()
+	const [btnActive, setBtnActive] = useState({ ru: false, en: false })
 
 	const changeLanguage = lng => {
 		i18n.changeLanguage(lng)
@@ -22,8 +24,24 @@ function Navbar() {
 							</Link>
 						</li>
 						<li className={styles.language}>
-							<button onClick={() => changeLanguage('en')}>en</button>
-							<button onClick={() => changeLanguage('ru')}>ru</button>
+							<button
+								className={`${styles.btn} ${btnActive.en ? styles.btnActive : ''}`}
+								onClick={() => {
+									setBtnActive(prev => ({ ...prev, en: true, ru: false }))
+									changeLanguage('en')
+								}}
+							>
+								en
+							</button>
+							<button
+								className={`${styles.btn} ${btnActive.ru ? styles.btnActive : ''}`}
+								onClick={() => {
+									setBtnActive(prev => ({ ...prev, ru: true, en: false }))
+									changeLanguage('ru')
+								}}
+							>
+								ru
+							</button>
 						</li>
 						<li className={styles.auth}>
 							<Link to='/Auth'>{t('Login')}</Link>
