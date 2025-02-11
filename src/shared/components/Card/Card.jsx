@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import style from './Card.module.scss'
 import { useDispatch } from 'react-redux'
 import { changeItem, postUpdateStatus } from '../../../shop/shoppingListSlice'
+import { Checkbox } from 'antd'
 
 function Card({ data, idPage }) {
 	const [ids, setIds] = useState([])
@@ -64,14 +65,21 @@ function Card({ data, idPage }) {
 						onMouseEnter={() => setIsHovered(true)}
 						onMouseLeave={() => setIsHovered(false)}
 					>
-						<input
-							type='checkbox'
+						<Checkbox
 							checked={item.isBought}
 							onChange={() => {
 								handleChangeIds(item.id)
 								handleCheckboxChange(item.id, !item.isBought)
 							}}
 						/>
+						{/* <input
+							type='checkbox'
+							checked={item.isBought}
+							onChange={() => {
+								handleChangeIds(item.id)
+								handleCheckboxChange(item.id, !item.isBought)
+							}}
+						/> */}
 						<h6
 							className={`${style.strike} ${item.isBought ? style.byStrike : ''}`}
 						>
