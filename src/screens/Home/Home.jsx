@@ -18,7 +18,9 @@ function Home() {
 			<div className={style.create}>
 				<h1 className={style.headings}>{t('Create your shopping list')}</h1>
 				<p className={style.paragraph}>
-					{t("Let's make shopping easier and more organized!")}
+					{t(
+						'Achieve a more efficient and organized shopping process effortlessly!'
+					)}
 					<Sparkle className={style.star} />
 				</p>
 			</div>

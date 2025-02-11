@@ -1,5 +1,6 @@
 @import url('../../public/addFonts/styleFonts.css');
 @import url('../../public/styles/fluid-text.scss');
+@import url('../../public/styles/media.scss');
 
 :root {
 	--primary-color: rgb(147 51 234 / 1);
@@ -9,4 +10,17 @@
 	--primary-color-sub-text: rgb(98 72 123);
 	--primary-color-placeholder: rgba(98, 72, 123, 0.521);
 	--secondary-color-text: #eafff8;
+	--wrapper-padding-rem: 7.5rem;
+}
+
+@media (width < 62.5rem) {
+	:root {
+		--wrapper-padding-rem: 3rem;
+	}
+}
+
+@media (width < 31.25rem) {
+	:root {
+		--wrapper-padding-rem: 1rem;
+	}
 }

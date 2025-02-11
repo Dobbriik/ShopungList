@@ -3,7 +3,7 @@ import styles from './languageSettings.module.scss'
 import { useState } from 'react'
 
 function LanguageSettings() {
-	const { t, i18n } = useTranslation()
+	const { i18n } = useTranslation()
 	const [btnActive, setBtnActive] = useState({ ru: false, en: false })
 	const changeLanguage = lng => {
 		i18n.changeLanguage(lng)

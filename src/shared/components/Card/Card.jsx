@@ -66,6 +66,7 @@ function Card({ data, idPage }) {
 						onMouseLeave={() => setIsHovered(false)}
 					>
 						<Checkbox
+							className={style.checkbox}
 							checked={item.isBought}
 							onChange={() => {
 								handleChangeIds(item.id)
