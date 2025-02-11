@@ -5,9 +5,10 @@ import styles from './Layout.module.scss'
 function Layout() {
 	return (
 		<>
-			<header>
+			<header className={styles.header}>
 				<Navbar />
 			</header>
+			<div className={styles.background}></div>
 			<main className={styles.back}>
 				<div className={styles.container}>
 					<Outlet />

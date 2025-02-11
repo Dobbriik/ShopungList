@@ -7,7 +7,7 @@ export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
 	async prompt => {
 		const data = await createPage(prompt)
-		return { ...data, requestId: Date.now() }
+		return { ...data }
 	}
 )
 
@@ -16,7 +16,7 @@ export const getShoppingList = createAsyncThunk(
 	async id => {
 		console.log('getShoppingList', id)
 		const data = await getPageById(id)
-		return { ...data, requestId: Date.now() }
+		return { ...data }
 	}
 )
 
@@ -75,7 +75,7 @@ const shoppingListSlice = createSlice({
 			.addCase(postShoppingList.fulfilled, (state, action) => {
 				state.loading = false
 				state.items.push(action.payload)
-				state.lastRequestId = action.payload.requestId
+				state.lastRequestId = action.payload.createdAt
 			})
 			.addCase(postShoppingList.rejected, (state, action) => {
 				state.loading = false
@@ -89,7 +89,7 @@ const shoppingListSlice = createSlice({
 			.addCase(getShoppingList.fulfilled, (state, action) => {
 				state.loading = false
 				state.items.push(action.payload)
-				state.lastRequestId = action.payload.requestId
+				state.lastRequestId = action.payload.createdAt
 			})
 			.addCase(getShoppingList.rejected, (state, action) => {
 				state.loading = false

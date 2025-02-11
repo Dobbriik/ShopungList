@@ -11,16 +11,41 @@
 }
 
 body {
-	transition: opacity 0.3s ease;
-	margin: 0;
-	background: linear-gradient(
-		-45deg,
-		var(--secondary-color),
-		var(--primary-color)
-	);
-	padding: 0;
-	min-height: 100vh;
+	// animation: gradientAnimation 15s ease infinite;
+	// transition: opacity 0.3s ease;
+	// background: linear-gradient(
+	// 	-45deg,
+	// 	var(--secondary-color),
+	// 	var(--primary-color)
+	// );
+	// background-size: 200% 200%;
+	// min-height: 100vh;
 	overflow-x: hidden;
+}
+
+// body::after {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	opacity: 0.5;
+// 	filter: blur(1px); /* Легкое размытие */
+// 	background: rgba(126, 82, 82, 0.1); /* Легкая белая подложка */
+// 	background-image: url('../../public/noise/dark-circles.png'); /* Текстура шума */
+// 	width: 100%;
+// 	height: 100%;
+// 	pointer-events: none;
+// 	content: '';
+// }
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .container {

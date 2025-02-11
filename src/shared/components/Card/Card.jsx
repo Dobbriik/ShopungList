@@ -27,7 +27,6 @@ function Card({ data, idPage }) {
 			),
 		}))
 		dispatch(changeItem({ idPage, id: itemId }))
-		// dispatch(postUpdateStatus([itemId]))
 	}
 	useEffect(() => {
 		if (debounceTimeout) {
@@ -42,7 +41,6 @@ function Card({ data, idPage }) {
 				}
 			}, 2000)
 		)
-		console.log('Actual ids:', ids) // Здесь всегда актуальные данные
 
 		return () => {
 			if (debounceTimeout) {
