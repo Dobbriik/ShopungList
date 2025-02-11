@@ -1,0 +1,22 @@
+.language {
+	display: flex;
+	position: absolute;
+	top: 30%;
+	right: 40px;
+	flex-direction: row;
+	gap: 3px;
+}
+
+.btn {
+	cursor: pointer;
+	outline: none;
+	border: none;
+	border-radius: 3px;
+	background-color: #265cbe;
+	padding: 0.3rem;
+	color: white;
+}
+
+.btnActive {
+	background-color: #497ddd;
+}

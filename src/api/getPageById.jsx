@@ -1,11 +1,9 @@
 import api from './api.jsx'
 import filterDefault from './filterDefault.jsx'
 export const getPageById = async id => {
-	function check(value) {
-		return value.items.length !== 0
-	}
 	try {
 		const response = await api.get(`/pages/${id}`)
+		console.log('responseresponseresponse', response)
 		const list = filterDefault(response.data.categories)
 
 		const result = {
@@ -20,6 +18,7 @@ export const getPageById = async id => {
 				{ category: element.name, items: getItems(element.items) },
 			]
 		}
+		console.log('resultresultresult', result)
 		return result
 	} catch (error) {
 		console.error('Ошибка при получении страницы:', error)

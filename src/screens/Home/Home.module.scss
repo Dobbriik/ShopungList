@@ -10,7 +10,6 @@
 	background: linear-gradient(-45deg, #f97316, #9333ea);
 	background-clip: text;
 	color: transparent;
-	font-size: 2rem;
 }
 
 .paragraph {
@@ -27,20 +26,19 @@
 }
 
 .textarea {
-	/* field-sizing: content; */
-	transition: outline 0.3s ease;
-	border: 2px solid #8b33ff50;
+	// field-sizing: content;
+	transition: all 0.1s ease;
+	border: 1px solid var(--primary-color);
 	border-radius: 7px;
 	padding: 10px;
 	width: -webkit-fill-available;
 	height: 200px;
 	resize: none;
 	font-weight: 600;
-	font-size: 1.125rem;
 	line-height: 1.75rem;
 }
 .textarea::placeholder {
-	color: #737373b4;
+	color: var(--primary-color-placeholder);
 }
 
 .textarea:focus {
@@ -57,7 +55,6 @@
 	padding: 12px;
 	color: #ffffff;
 	font-weight: 600;
-	font-size: 1.3rem;
 }
 
 .btn:hover {

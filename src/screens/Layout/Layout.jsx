@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../../shared/components/navbar/Navbar'
-import styles from './Layout.module.css'
+import styles from './Layout.module.scss'
 
 function Layout() {
 	return (
-		<div>
+		<>
 			<header>
 				<Navbar />
 			</header>
@@ -13,7 +13,7 @@ function Layout() {
 					<Outlet />
 				</div>
 			</main>
-		</div>
+		</>
 	)
 }
 

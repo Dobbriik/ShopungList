@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 function useFormattedDate(data) {
-	const formattedDate = moment(data).format('DD.MM.YYYY HH:mm:ss')
+	const formattedDate = moment(data).format('DD.MM.YYYY')
 	return formattedDate
 }
 

@@ -4,7 +4,7 @@ import Layout from '../screens/Layout/Layout'
 import Auth from '../screens/Auth/Auth'
 import Register from '../screens/Register/Register'
 import List from '../screens/List/List'
-import ListSkeleton from '../screens/List/ListSkeleton'
+import ListSkeleton from '../screens/ListSkeleton/ListSkeleton'
 import SidBar from '../shared/components/SidBar/SidBar'
 
 function App() {

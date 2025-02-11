@@ -1,15 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
+import LanguageSettings from '../languageSettings/languageSettings'
 
 function Navbar() {
 	const { t, i18n } = useTranslation()
 	const [btnActive, setBtnActive] = useState({ ru: false, en: false })
-
+	const navigate = useNavigate()
 	const changeLanguage = lng => {
 		i18n.changeLanguage(lng)
+	}
+
+	const handleClickToHome = () => {
+		navigate('/')
 	}
 	return (
 		<div className={styles.wrap}>
@@ -17,32 +22,13 @@ function Navbar() {
 				<div className={styles.container}>
 					<ul className={styles.list}>
 						<li>
-							<Link className={styles.link} to='/'>
-								<ShoppingCart />
+							<h3 className={styles.link} onClick={handleClickToHome}>
+								<ShoppingCart className={styles.cart} />
 								<span> </span>
 								{t('Shopping list')}
-							</Link>
+							</h3>
 						</li>
-						<li className={styles.language}>
-							<button
-								className={`${styles.btn} ${btnActive.en ? styles.btnActive : ''}`}
-								onClick={() => {
-									setBtnActive(prev => ({ ...prev, en: true, ru: false }))
-									changeLanguage('en')
-								}}
-							>
-								en
-							</button>
-							<button
-								className={`${styles.btn} ${btnActive.ru ? styles.btnActive : ''}`}
-								onClick={() => {
-									setBtnActive(prev => ({ ...prev, ru: true, en: false }))
-									changeLanguage('ru')
-								}}
-							>
-								ru
-							</button>
-						</li>
+						<LanguageSettings />
 						<li className={styles.auth}>
 							<Link to='/Auth'>{t('Login')}</Link>
 							<Link className={styles.regis} to='/Register'>

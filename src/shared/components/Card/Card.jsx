@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import style from './Card.module.css'
+import style from './Card.module.scss'
 import { useDispatch } from 'react-redux'
 import { changeItem, postUpdateStatus } from '../../../shop/shoppingListSlice'
 
@@ -52,7 +52,7 @@ function Card({ data, idPage }) {
 	}, [ids])
 	return (
 		<div className={style.container}>
-			<h3 className={style.category}>{data.category}</h3>
+			<h4 className={style.category}>{data.category}</h4>
 			<ul>
 				{data.items.map(item => (
 					<li
@@ -74,11 +74,11 @@ function Card({ data, idPage }) {
 								handleCheckboxChange(item.id, !item.isBought)
 							}}
 						/>
-						<p
+						<h6
 							className={`${style.strike} ${item.isBought ? style.byStrike : ''}`}
 						>
 							{item.content.charAt(0).toUpperCase() + item.content.slice(1)}
-						</p>
+						</h6>
 					</li>
 				))}
 			</ul>

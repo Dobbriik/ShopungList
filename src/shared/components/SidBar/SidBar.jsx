@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import useFormattedDate from '../../hooks/useFormattedDate'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import styles from './SaidBar.module.css'
+import styles from './SaidBar.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import useStartsWithLis from '../../hooks/useStartsWithLis'
 import { useTranslation } from 'react-i18next'
@@ -54,33 +54,35 @@ function SidBar() {
 	})
 
 	return (
-		<div className={styles.dropdown}>
-			<button
-				ref={dropdownRefBtn}
-				className={`${styles.dropdownToggle} ${isOpen ? styles.dropdownToggleActive : ''}`}
-				onClick={toggleDropdown}
-			>
-				{checkPath ? selectedOption || t('Select Cart') : t('Select Cart')}
-			</button>
-			{
-				<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
-					<ul
-						className={`${styles.dropdownMenu} ${isOpen ? styles.visibleMenu : ''}`}
-					>
-						{options.map(({ idPage, requestId }, i) => (
-							<li
-								ref={dropdownRef}
-								key={i}
-								id={idPage}
-								className={`${styles.dropdownOption} ${id == idPage ? styles.target : ''}`}
-								onClick={() => handleOptionClick(idPage, requestId)}
-							>
-								{format(requestId)}
-							</li>
-						))}
-					</ul>
-				</div>
-			}
+		<div className={`${styles.containerDropdown}`}>
+			<div className={styles.dropdown}>
+				<button
+					ref={dropdownRefBtn}
+					className={`${styles.dropdownToggle} ${options.length !== 0 && isOpen ? styles.dropdownToggleActiveTrue : ''} ${isOpen ? styles.dropdownToggleActive : ''}`}
+					onClick={toggleDropdown}
+				>
+					{checkPath ? selectedOption || t('Select Cart') : t('Select Cart')}
+				</button>
+				{
+					<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
+						<ul
+							className={`${styles.dropdownMenu} ${isOpen ? styles.visibleMenu : ''}`}
+						>
+							{options.map(({ idPage, requestId }, i) => (
+								<li
+									ref={dropdownRef}
+									key={i}
+									id={idPage}
+									className={`${styles.dropdownOption} ${id == idPage ? styles.target : ''}`}
+									onClick={() => handleOptionClick(idPage, requestId)}
+								>
+									<p className={styles.format}>{format(requestId)}</p>
+								</li>
+							))}
+						</ul>
+					</div>
+				}
+			</div>
 		</div>
 	)
 }
