@@ -9,13 +9,13 @@ function useCreateContentInStore() {
 	let list = useRef(null)
 	list.current = useFindPageId(id)
 	let content = null
+	const createAt = list.current.createdAt
 	if (list.current) {
-		console.log('list.current', list.current)
 		content = list.current.categories.map((item, index) => (
 			<Card key={index} data={item} idPage={id} />
 		))
 	}
-	return { content }
+	return { content, createAt }
 }
 
 export default useCreateContentInStore

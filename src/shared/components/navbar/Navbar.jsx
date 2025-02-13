@@ -6,6 +6,7 @@ import { useState } from 'react'
 import LanguageSettings from '../languageSettings/languageSettings'
 import AuthButton from '../authButton/authButton'
 import Wrapper from '../wrapper/Wrapper'
+import BurgerMenu from '../burgerMenu/BurgerMenu'
 
 function Navbar() {
 	const { t } = useTranslation()
@@ -39,7 +40,11 @@ function Navbar() {
 						<li className={`${styles.auth} ${styles.settings}`}>
 							<AuthButton />
 						</li>
-						<Menu
+						<li className={styles.burger}>
+							<BurgerMenu />
+						</li>
+
+						{/* <Menu
 							className={styles.burger}
 							onClick={() => {
 								handleClickBurger()
@@ -50,7 +55,7 @@ function Navbar() {
 						>
 							<AuthButton />
 							<LanguageSettings />
-						</div>
+						</div> */}
 					</ul>
 				</nav>
 			</Wrapper>

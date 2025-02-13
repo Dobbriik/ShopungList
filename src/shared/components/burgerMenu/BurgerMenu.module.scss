@@ -1,0 +1,43 @@
+.menu {
+}
+
+.container {
+	display: none;
+}
+
+.background {
+	display: none;
+}
+
+.backgroundActive {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.26);
+	width: 100vw;
+	height: 100vh;
+}
+
+.containerOpen {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	gap: 10px;
+	z-index: 10;
+	z-index: 5;
+	margin: 0 auto;
+	margin-top: 20vh;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	background-color: rgb(147 51 234 / 1);
+	padding: 10px;
+	max-width: 70vw;
+	.element {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
+		padding: 10px;
+	}
+}

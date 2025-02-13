@@ -11,11 +11,18 @@
 	--primary-color-placeholder: rgba(98, 72, 123, 0.521);
 	--secondary-color-text: #eafff8;
 	--wrapper-padding-rem: 7.5rem;
+	--max-width-container: 60vw;
 }
 
 @media (width < 62.5rem) {
 	:root {
 		--wrapper-padding-rem: 3rem;
+	}
+}
+
+@media (width < 53.125rem) {
+	:root {
+		--max-width-container: 100%;
 	}
 }
 

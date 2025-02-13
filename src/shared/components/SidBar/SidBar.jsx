@@ -5,25 +5,27 @@ import styles from './SaidBar.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import useStartsWithLis from '../../hooks/useStartsWithLis'
 import { useTranslation } from 'react-i18next'
+import useClickWithoutRef from '../../hooks/useClickWithoutRef'
 
 function SidBar() {
+	const {
+		dropdownRefOpenElement,
+		dropdownRefBtn,
+		toggleBtn,
+		isOpen,
+		setIsOpen,
+	} = useClickWithoutRef()
+
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
 	const { id } = useParams()
 	const checkPath = useStartsWithLis(pathname)
-	const [isOpen, setIsOpen] = useState(false)
 	const [selectedOption, setSelectedOption] = useState(null)
 	const options = useSelector(state => state.shoppingList.items)
-	const dropdownRef = useRef(null)
-	const dropdownRefBtn = useRef(null)
 	const format = useFormattedDate
 
-	const toggleDropdown = () => {
-		setIsOpen(!isOpen)
-	}
 	useEffect(() => {
-		console.log('selectedOption', selectedOption)
 		if (!checkPath) {
 			setSelectedOption(null)
 		}
@@ -35,48 +37,28 @@ function SidBar() {
 		navigate(`/List/${idPage}`)
 	}
 
-	const handleClickOutside = event => {
-		if (
-			dropdownRef.current &&
-			!dropdownRef.current.contains(event.target) &&
-			dropdownRefBtn.current &&
-			!dropdownRefBtn.current.contains(event.target)
-		) {
-			setIsOpen(false)
-		}
-	}
-
-	useEffect(() => {
-		document.addEventListener('click', handleClickOutside, true)
-		return () => {
-			document.removeEventListener('click', handleClickOutside, true)
-		}
-	})
-
 	return (
 		<div className={`${styles.containerDropdown}`}>
 			<div className={styles.dropdown}>
 				<button
 					ref={dropdownRefBtn}
 					className={`${styles.dropdownToggle} ${options.length !== 0 && isOpen ? styles.dropdownToggleActiveTrue : ''} ${isOpen ? styles.dropdownToggleActive : ''}`}
-					onClick={toggleDropdown}
+					onClick={toggleBtn}
 				>
 					{checkPath ? selectedOption || t('Select Cart') : t('Select Cart')}
 				</button>
 				{
 					<div className={`${styles.grid} ${isOpen ? styles.visible : ''}`}>
-						<ul
-							className={`${styles.dropdownMenu} ${isOpen ? styles.visibleMenu : ''}`}
-						>
-							{options.map(({ idPage, requestId }, i) => (
+						<ul className={`${styles.dropdownMenu} `}>
+							{options.map(({ idPage, createdAt }, i) => (
 								<li
-									ref={dropdownRef}
+									ref={dropdownRefOpenElement}
 									key={i}
 									id={idPage}
 									className={`${styles.dropdownOption} ${id == idPage ? styles.target : ''}`}
-									onClick={() => handleOptionClick(idPage, requestId)}
+									onClick={() => handleOptionClick(idPage, createdAt)}
 								>
-									<p className={styles.format}>{format(requestId)}</p>
+									<p className={styles.format}>{format(createdAt)}</p>
 								</li>
 							))}
 						</ul>

@@ -17,3 +17,11 @@
 .btnActive {
 	background-color: #497ddd;
 }
+
+.btn:hover {
+	filter: brightness(1.2);
+}
+
+.btn:active {
+	filter: brightness(0.9);
+}

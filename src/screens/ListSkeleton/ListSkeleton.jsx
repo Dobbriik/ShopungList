@@ -26,19 +26,11 @@ function ListSkeleton() {
 
 	if (error) {
 		console.log('Content Error', error)
-		return (
-			<div>
-				<SkeletonCard>{'Content Error'}</SkeletonCard>
-			</div>
-		)
+		return <SkeletonCard>{'Content Error'}</SkeletonCard>
 	}
 
 	if (!firstItem) {
-		return (
-			<div>
-				<SkeletonCard>{'Content is missing'}</SkeletonCard>
-			</div>
-		)
+		return <SkeletonCard>{'Content is missing'}</SkeletonCard>
 	}
 
 	return <div>Content loaded</div>

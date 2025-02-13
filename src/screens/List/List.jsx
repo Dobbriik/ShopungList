@@ -7,13 +7,13 @@ import {
 } from './hooksForList'
 
 function List() {
-	const { content, requestId } = useCreateContentInStore()
+	const { content, createAt } = useCreateContentInStore()
 
 	if (!content) {
 		const ifNoPage = usePreload()
 	}
 
-	const headerCard = useHeaderCard(requestId)
+	const headerCard = useHeaderCard(createAt)
 
 	return (
 		<Container className={style.container}>
