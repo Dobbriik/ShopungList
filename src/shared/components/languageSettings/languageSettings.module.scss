@@ -1,0 +1,27 @@
+.language {
+	display: flex;
+	flex-direction: row;
+	gap: 3px;
+}
+
+.btn {
+	cursor: pointer;
+	outline: none;
+	border: none;
+	border-radius: 3px;
+	background-color: #265cbe;
+	padding: 0.3rem;
+	color: white;
+}
+
+.btnActive {
+	background-color: #497ddd;
+}
+
+.btn:hover {
+	filter: brightness(1.2);
+}
+
+.btn:active {
+	filter: brightness(0.9);
+}

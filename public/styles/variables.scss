@@ -1,0 +1,33 @@
+@import url('../../public/addFonts/styleFonts.css');
+@import url('../../public/styles/fluid-text.scss');
+@import url('../../public/styles/media.scss');
+
+:root {
+	--primary-color: rgb(147 51 234 / 1);
+	--secondary-color: #f97316;
+	--font-family-base-ru: Montserrat Alternates, serif;
+	--primary-color-text: rgb(129 65 187);
+	--primary-color-sub-text: rgb(98 72 123);
+	--primary-color-placeholder: rgba(98, 72, 123, 0.521);
+	--secondary-color-text: #eafff8;
+	--wrapper-padding-rem: 7.5rem;
+	--max-width-container: 60vw;
+}
+
+@media (width < 62.5rem) {
+	:root {
+		--wrapper-padding-rem: 3rem;
+	}
+}
+
+@media (width < 53.125rem) {
+	:root {
+		--max-width-container: 100%;
+	}
+}
+
+@media (width < 31.25rem) {
+	:root {
+		--wrapper-padding-rem: 1rem;
+	}
+}

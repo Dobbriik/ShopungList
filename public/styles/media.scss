@@ -1,0 +1,11 @@
+@media (width < 62.5rem) {
+	:root {
+		--wrapper-padding-rem: 3rem;
+	}
+}
+
+@media (width < 31.25rem) {
+	:root {
+		--wrapper-padding-rem: 1rem;
+	}
+}

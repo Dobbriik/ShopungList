@@ -1,0 +1,70 @@
+@use 'sass:math';
+@import url('../../public/styles/fluid-text.scss');
+@import url('../../public/styles/variables.scss');
+@import url('../../public/styles/media.scss');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-family-base-ru);
+}
+
+body {
+	position: relative;
+	animation: gradientAnimation 10s ease infinite;
+	transition: opacity 0.3s ease;
+	background: linear-gradient(
+		-45deg,
+		var(--secondary-color),
+		var(--primary-color)
+	);
+	background-size: 400% 400%;
+	min-width: 100vw;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+body::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 1;
+	z-index: -1;
+	filter: blur(0.2px); /* Легкое размытие */
+	background: rgba(126, 82, 82, 0.1); /* Легкая белая подложка */
+	background-image: url('../../public/noise/food.png'); /* Текстура шума */
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	content: '';
+}
+
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin: 25px auto;
+	border-radius: 10px;
+	background-color: #ffffffe6;
+	padding: 24px;
+	width: max-content;
+	min-width: 500px;
+	--tw-shadow: 0 25px 50px -12px #00000040;
+	--tw-shadow-colored: 0 25px 50px -12px;
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+		var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
