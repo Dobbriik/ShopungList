@@ -73,14 +73,6 @@ function Card({ data, idPage }) {
 								handleCheckboxChange(item.id, !item.isBought)
 							}}
 						/>
-						{/* <input
-							type='checkbox'
-							checked={item.isBought}
-							onChange={() => {
-								handleChangeIds(item.id)
-								handleCheckboxChange(item.id, !item.isBought)
-							}}
-						/> */}
 						<h6
 							className={`${style.strike} ${item.isBought ? style.byStrike : ''}`}
 						>
