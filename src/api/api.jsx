@@ -3,16 +3,11 @@ import axios from 'axios'
 const baseURL = import.meta.env.VITE_API_URL
 
 const api = axios.create({
-	baseURL: baseURL, // Базовый URL
+	baseURL: baseURL,
 	headers: {
-		'Content-Type': 'application/json', // Заголовки по умолчанию
+		'Content-Type': 'application/json',
 	},
-	timeout: 0, // Таймаут запроса (5 секунд)
+	timeout: 0,
 })
-
-// Disable SSL verification for mixed content
-// api.defaults.httpsAgent = new (require('https').Agent)({
-// 	rejectUnauthorized: false,
-// })
 
 export default api
