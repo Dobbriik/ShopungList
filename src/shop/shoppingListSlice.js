@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createPage } from '../api/createPage.jsx'
 import { getPageById } from '../api/getPageById.jsx'
 import { updateStatus } from '../api/updateStatus.jsx'
+import { editItemApi } from '../api/editItemApi.jsx'
 
 export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
@@ -14,9 +15,16 @@ export const postShoppingList = createAsyncThunk(
 export const getShoppingList = createAsyncThunk(
 	'shoppingList/getShoppingList',
 	async id => {
-		console.log('getShoppingList', id)
 		const data = await getPageById(id)
 		return { ...data }
+	}
+)
+
+export const putShoppingList = createAsyncThunk(
+	'shoppingList/putShoppingList',
+	async ({ idItem, newContent }) => {
+		const data = await editItemApi(idItem, newContent)
+		return data
 	}
 )
 
@@ -53,7 +61,6 @@ const shoppingListSlice = createSlice({
 						const items = categories.items.map(i => {
 							return i.id === id ? { ...i, isBought: !i.isBought } : i
 						})
-						console.log('items', items)
 						let newCategories = { ...categories, items: items }
 						forChangeCategory.push(newCategories)
 					}
@@ -63,6 +70,19 @@ const shoppingListSlice = createSlice({
 			state.items = state.items.map(i => {
 				return i.idPage == idPage ? changedItem : i
 			})
+		},
+		editItem: (state, action) => {
+			const { idPage, idItem, newContent } = action.payload
+			for (const items of state.items) {
+				if (items.idPage === idPage) {
+					for (const categories of items.categories) {
+						const product = categories.items.find(item => item.id === idItem)
+						if (product) {
+							product.content = newContent
+						}
+					}
+				}
+			}
 		},
 	},
 	extraReducers: builder => {
@@ -98,5 +118,6 @@ const shoppingListSlice = createSlice({
 	},
 })
 
-export const { addItem, removeItem, changeItem } = shoppingListSlice.actions
+export const { addItem, removeItem, changeItem, editItem } =
+	shoppingListSlice.actions
 export default shoppingListSlice.reducer

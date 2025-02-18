@@ -1,0 +1,18 @@
+.input {
+	display: none;
+}
+
+.clickOf {
+	display: block;
+	transition: all 0.2s ease;
+	border: 2px solid #e5e7eb;
+	border-radius: 0.7rem;
+	padding: 0.3rem 0.5rem;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.clickOf:focus {
+	outline: none;
+	border-color: #9333ea;
+}

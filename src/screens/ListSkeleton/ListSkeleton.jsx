@@ -8,6 +8,7 @@ function ListSkeleton() {
 	const { items, loading, error, lastRequestId } = useSelector(
 		state => state.shoppingList
 	)
+
 	const navigate = useNavigate()
 	const firstItem = items[0]
 

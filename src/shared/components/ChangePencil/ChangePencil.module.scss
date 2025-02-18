@@ -1,0 +1,9 @@
+.changePencil {
+	z-index: 11;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.changePencil:hover {
+	color: var(--primary-color);
+}

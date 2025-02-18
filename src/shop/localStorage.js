@@ -25,7 +25,6 @@ export const loadState = () => {
 }
 
 export const saveState = state => {
-	console.log('state', state)
 	try {
 		for (const element of state.shoppingList.items) {
 			const serializedState = JSON.stringify(element)

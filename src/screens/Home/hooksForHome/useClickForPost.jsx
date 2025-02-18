@@ -10,7 +10,7 @@ function useClickForPost() {
 
 	const handleClick = () => {
 		if (text.trim() === '') {
-			alert('Пожалуйста, введите текст')
+			alert('Please enter text')
 			return
 		}
 		dispatch(postShoppingList(text))
