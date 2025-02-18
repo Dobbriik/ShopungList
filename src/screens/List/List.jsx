@@ -19,9 +19,12 @@ function List() {
 		<Container className={style.container}>
 			{headerCard}
 			<div className={style.list}>{content}</div>
+<<<<<<< HEAD
 			<div>
 				<input type='text' />
 			</div>
+=======
+>>>>>>> upstream/main
 		</Container>
 	)
 }

@@ -11,15 +11,21 @@
 
 .element {
 	display: flex;
+<<<<<<< HEAD
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+=======
+	align-items: center;
+	gap: 11px;
+>>>>>>> upstream/main
 	transition: all 0.2s ease;
 	cursor: pointer;
 	margin-bottom: 0.75rem;
 	border: 1px solid #e5e7eb;
 	border-radius: 1rem;
 	background: white;
+<<<<<<< HEAD
 	padding: 1rem 1rem;
 	font-weight: 600;
 	list-style: none;
@@ -30,6 +36,10 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
+=======
+	padding: 1rem;
+	font-weight: 600;
+>>>>>>> upstream/main
 }
 
 .by {
@@ -46,7 +56,11 @@
 	border-color: #9333ea;
 }
 .element:hover .strike::after {
+<<<<<<< HEAD
 	// width: 100%;
+=======
+	width: 100%;
+>>>>>>> upstream/main
 }
 
 .strike {
@@ -76,6 +90,7 @@
 	height: 2px;
 	content: '';
 }
+<<<<<<< HEAD
 
 .content {
 	display: flex;
@@ -110,3 +125,5 @@
 .input {
 	display: none;
 }
+=======
+>>>>>>> upstream/main

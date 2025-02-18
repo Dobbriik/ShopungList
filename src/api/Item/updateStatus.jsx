@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import api from '../api'
+=======
+import api from './api'
+>>>>>>> upstream/main
 
 export const updateStatus = async id => {
 	try {

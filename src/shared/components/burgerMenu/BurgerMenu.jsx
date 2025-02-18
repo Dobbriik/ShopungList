@@ -1,8 +1,13 @@
 import { Menu } from 'lucide-react'
 import useClickWithoutRef from '../../hooks/useClickWithoutRef'
 import styles from './BurgerMenu.module.scss'
+<<<<<<< HEAD
 import AuthButton from '../authButton/authButton'
 import LanguageSettings from '../languageSettings/languageSettings'
+=======
+import AuthButton from '../authButton/AuthButton'
+import LanguageSettings from '../languageSettings/LanguageSettings'
+>>>>>>> upstream/main
 
 function BurgerMenu() {
 	const {

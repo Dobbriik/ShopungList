@@ -10,4 +10,9 @@ const api = axios.create({
 	timeout: 0, // Таймаут запроса (5 секунд)
 })
 
+// Disable SSL verification for mixed content
+api.defaults.httpsAgent = new (require('https').Agent)({
+	rejectUnauthorized: false,
+})
+
 export default api

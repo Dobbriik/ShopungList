@@ -25,6 +25,10 @@ export const loadState = () => {
 }
 
 export const saveState = state => {
+<<<<<<< HEAD
+=======
+	console.log('state', state)
+>>>>>>> upstream/main
 	try {
 		for (const element of state.shoppingList.items) {
 			const serializedState = JSON.stringify(element)

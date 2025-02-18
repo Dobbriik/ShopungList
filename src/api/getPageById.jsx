@@ -3,6 +3,10 @@ import filterDefault from './filterDefault.jsx'
 export const getPageById = async id => {
 	try {
 		const response = await api.get(`/pages/${id}`)
+<<<<<<< HEAD
+=======
+		console.log('responseresponseresponse', response)
+>>>>>>> upstream/main
 		const list = filterDefault(response.data.categories)
 
 		const result = {
@@ -17,6 +21,10 @@ export const getPageById = async id => {
 				{ category: element.name, items: getItems(element.items) },
 			]
 		}
+<<<<<<< HEAD
+=======
+		console.log('resultresultresult', result)
+>>>>>>> upstream/main
 		return result
 	} catch (error) {
 		console.error('Ошибка при получении страницы:', error)
