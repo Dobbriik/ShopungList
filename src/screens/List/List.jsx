@@ -19,6 +19,9 @@ function List() {
 		<Container className={style.container}>
 			{headerCard}
 			<div className={style.list}>{content}</div>
+			<div>
+				<input type='text' />
+			</div>
 		</Container>
 	)
 }
