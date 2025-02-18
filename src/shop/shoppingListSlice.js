@@ -2,10 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createPage } from '../api/createPage.jsx'
 import { getPageById } from '../api/getPageById.jsx'
 import { updateStatus } from '../api/updateStatus.jsx'
-<<<<<<< HEAD
 import { editItemApi } from '../api/editItemApi.jsx'
-=======
->>>>>>> upstream/main
 
 export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
@@ -18,16 +15,11 @@ export const postShoppingList = createAsyncThunk(
 export const getShoppingList = createAsyncThunk(
 	'shoppingList/getShoppingList',
 	async id => {
-<<<<<<< HEAD
-=======
-		console.log('getShoppingList', id)
->>>>>>> upstream/main
 		const data = await getPageById(id)
 		return { ...data }
 	}
 )
 
-<<<<<<< HEAD
 export const putShoppingList = createAsyncThunk(
 	'shoppingList/putShoppingList',
 	async ({ idItem, newContent }) => {
@@ -36,8 +28,6 @@ export const putShoppingList = createAsyncThunk(
 	}
 )
 
-=======
->>>>>>> upstream/main
 export const postUpdateStatus = createAsyncThunk(
 	'shoppingList/postUpdateStatus',
 	async id => {
@@ -71,10 +61,6 @@ const shoppingListSlice = createSlice({
 						const items = categories.items.map(i => {
 							return i.id === id ? { ...i, isBought: !i.isBought } : i
 						})
-<<<<<<< HEAD
-=======
-						console.log('items', items)
->>>>>>> upstream/main
 						let newCategories = { ...categories, items: items }
 						forChangeCategory.push(newCategories)
 					}
@@ -85,7 +71,6 @@ const shoppingListSlice = createSlice({
 				return i.idPage == idPage ? changedItem : i
 			})
 		},
-<<<<<<< HEAD
 		editItem: (state, action) => {
 			const { idPage, idItem, newContent } = action.payload
 			for (const items of state.items) {
@@ -99,8 +84,6 @@ const shoppingListSlice = createSlice({
 				}
 			}
 		},
-=======
->>>>>>> upstream/main
 	},
 	extraReducers: builder => {
 		builder
@@ -135,10 +118,6 @@ const shoppingListSlice = createSlice({
 	},
 })
 
-<<<<<<< HEAD
 export const { addItem, removeItem, changeItem, editItem } =
 	shoppingListSlice.actions
-=======
-export const { addItem, removeItem, changeItem } = shoppingListSlice.actions
->>>>>>> upstream/main
 export default shoppingListSlice.reducer

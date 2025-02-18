@@ -3,13 +3,8 @@ import styles from './Navbar.module.css'
 import { Menu, ShoppingCart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-<<<<<<< HEAD
 import LanguageSettings from '../languageSettings/languageSettings'
 import AuthButton from '../authButton/authButton'
-=======
-import LanguageSettings from '../languageSettings/LanguageSettings'
-import AuthButton from '../authButton/AuthButton'
->>>>>>> upstream/main
 import Wrapper from '../wrapper/Wrapper'
 import BurgerMenu from '../burgerMenu/BurgerMenu'
 

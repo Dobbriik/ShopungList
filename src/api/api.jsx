@@ -11,8 +11,8 @@ const api = axios.create({
 })
 
 // Disable SSL verification for mixed content
-api.defaults.httpsAgent = new (require('https').Agent)({
-	rejectUnauthorized: false,
-})
+// api.defaults.httpsAgent = new (require('https').Agent)({
+// 	rejectUnauthorized: false,
+// })
 
 export default api

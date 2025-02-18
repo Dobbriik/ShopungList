@@ -12,12 +12,6 @@ function useClickWithoutRef() {
 	const handleOptionClick = () => {
 		setIsOpen(false)
 	}
-<<<<<<< HEAD
-=======
-	useEffect(() => {
-		console.log('isOpen', isOpen)
-	}, [isOpen])
->>>>>>> upstream/main
 
 	const handleClickOutside = event => {
 		if (

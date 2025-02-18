@@ -9,10 +9,6 @@ function usePreload() {
 	const navigateList = useNavigate()
 
 	useEffect(() => {
-<<<<<<< HEAD
-=======
-		console.log('id list', id)
->>>>>>> upstream/main
 		dispatch(getShoppingList(id))
 		navigateList('/List')
 	}, [])
