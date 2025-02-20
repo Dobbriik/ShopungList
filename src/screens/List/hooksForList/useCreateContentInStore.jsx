@@ -8,6 +8,7 @@ function useCreateContentInStore() {
 	const { id } = useParams()
 	let list = useRef(null)
 	list.current = useFindPageId(id)
+	const data = list.current
 	let content = null
 	let createAt
 	if (list.current) {
@@ -16,7 +17,7 @@ function useCreateContentInStore() {
 			<Card key={index} data={item} idPage={id} />
 		))
 	}
-	return { content, createAt }
+	return { content, id, createAt, data }
 }
 
 export default useCreateContentInStore

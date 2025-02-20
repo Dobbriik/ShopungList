@@ -4,8 +4,9 @@ import filterDefault from './filterDefault'
 export const createPage = async prompt => {
 	try {
 		const response = await api.post('/pages', { prompt })
-		const list = filterDefault(response.data.categories)
 
+		console.warn(location)
+		const list = filterDefault(response.data.categories)
 		const result = {
 			idPage: response.data.id,
 			categories: [],

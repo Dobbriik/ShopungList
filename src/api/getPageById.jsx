@@ -3,6 +3,7 @@ import filterDefault from './filterDefault.jsx'
 export const getPageById = async id => {
 	try {
 		const response = await api.get(`/pages/${id}`)
+		console.warn('get', response)
 		const list = filterDefault(response.data.categories)
 
 		const result = {

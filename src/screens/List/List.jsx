@@ -1,5 +1,6 @@
 import Container from '../../shared/components/container/Container'
 import style from './List.module.scss'
+import InputAddItem from './component/InputAddItem'
 import {
 	useHeaderCard,
 	usePreload,
@@ -7,7 +8,7 @@ import {
 } from './hooksForList'
 
 function List() {
-	const { content, createAt } = useCreateContentInStore()
+	const { data, id, content, createAt } = useCreateContentInStore()
 
 	if (!content) {
 		const ifNoPage = usePreload()
@@ -19,9 +20,7 @@ function List() {
 		<Container className={style.container}>
 			{headerCard}
 			<div className={style.list}>{content}</div>
-			<div>
-				<input type='text' />
-			</div>
+			{/* <InputAddItem data={data} id={id} /> */}
 		</Container>
 	)
 }
