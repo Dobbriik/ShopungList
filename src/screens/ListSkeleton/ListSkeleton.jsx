@@ -9,16 +9,24 @@ function ListSkeleton() {
 		state => state.shoppingList
 	)
 	const navigate = useNavigate()
-	const firstItem = items[0]
+	let lastItem
 
 	useEffect(() => {
 		if (!loading && lastRequestId) {
-			const lastItem = items.find(item => item.createdAt === lastRequestId)
+			lastItem = items.find(item => item.createdAt === lastRequestId)
 			if (lastItem) {
 				navigate(`/List/${lastItem.idPage}`)
 			}
 		}
 	}, [loading, lastRequestId, items, navigate])
+
+	useEffect(() => {
+		if (error || !lastItem) {
+			setTimeout(() => {
+				navigate('/')
+			}, 6000)
+		}
+	}, [])
 
 	if (loading) {
 		return <SkeletonCard />
@@ -29,11 +37,15 @@ function ListSkeleton() {
 		return <SkeletonCard>{'Content Error'}</SkeletonCard>
 	}
 
-	if (!firstItem) {
+	if (!lastItem) {
 		return <SkeletonCard>{'Content is missing'}</SkeletonCard>
 	}
 
-	return <div>Content loaded</div>
+	return (
+		<SkeletonCard>
+			<div>Content loaded</div>
+		</SkeletonCard>
+	)
 }
 
 export default ListSkeleton
