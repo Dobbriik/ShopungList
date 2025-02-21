@@ -12,14 +12,14 @@
 
 body {
 	position: relative;
-	animation: gradientAnimation 10s ease infinite;
+	// animation: gradientAnimation 10s ease infinite;
 	transition: opacity 0.3s ease;
 	background: linear-gradient(
 		-45deg,
 		var(--secondary-color),
 		var(--primary-color)
 	);
-	background-size: 400% 400%;
+	background-size: 100% 100%;
 	min-width: 100vw;
 	min-height: 100vh;
 	overflow-x: hidden;
@@ -40,17 +40,17 @@ body::after {
 	content: '';
 }
 
-@keyframes gradientAnimation {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+// @keyframes gradientAnimation {
+// 	0% {
+// 		background-position: 0% 50%;
+// 	}
+// 	50% {
+// 		background-position: 100% 50%;
+// 	}
+// 	100% {
+// 		background-position: 0% 50%;
+// 	}
+// }
 
 .container {
 	display: flex;
