@@ -1,0 +1,112 @@
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.category {
+	margin-bottom: 1rem;
+	color: #1f2937;
+	font-weight: 600;
+}
+
+.element {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	transition: all 0.2s ease;
+	cursor: pointer;
+	margin-bottom: 0.75rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 1rem;
+	background: white;
+	padding: 1rem 1rem;
+	font-weight: 600;
+	list-style: none;
+}
+
+.text {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+.by {
+	// background: rgb(176, 181, 204);
+}
+
+.checkbox {
+	aspect-ratio: 1 / 1;
+	width: 10px;
+}
+
+.element:hover {
+	outline: none;
+	border-color: #9333ea;
+}
+.element:hover .strike::after {
+	// width: 100%;
+}
+
+.strike {
+	position: relative;
+	overflow: hidden;
+	font-weight: 600;
+}
+
+.strike::after {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transition: width 0.3s ease;
+	background: #27051d;
+	width: 0%;
+	height: 2px;
+	content: '';
+}
+
+.byStrike::after {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transition: width 0.3s ease;
+	background: #27051d;
+	width: 100%;
+	height: 2px;
+	content: '';
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.clickOn {
+	display: none;
+}
+
+.savePencil {
+	display: flex;
+	flex-direction: row;
+	gap: 0.7rem;
+}
+
+.save {
+	display: none;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.save:hover {
+	color: var(--primary-color);
+}
+
+.clickOf {
+	display: block;
+}
+
+.input {
+	display: none;
+}

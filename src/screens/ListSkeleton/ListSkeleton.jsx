@@ -20,13 +20,14 @@ function ListSkeleton() {
 		}
 	}, [loading, lastRequestId, items, navigate])
 
-	useEffect(() => {
-		if (error || !lastItem) {
-			setTimeout(() => {
-				navigate('/')
-			}, 6000)
-		}
-	}, [])
+	// useEffect(() => {
+	// 	console.warn('error || !lastItem', error, !lastItem)
+	// 	if (error || !lastItem) {
+	// 		setTimeout(() => {
+	// 			navigate('/')
+	// 		}, 6000)
+	// 	}
+	// }, [])
 
 	if (loading) {
 		return <SkeletonCard />

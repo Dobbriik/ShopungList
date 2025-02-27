@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Container from '../../shared/components/container/Container'
 import style from './List.module.scss'
 import InputAddItem from './component/InputAddItem'
@@ -10,9 +11,7 @@ import {
 function List() {
 	const { data, id, content, createAt } = useCreateContentInStore()
 
-	if (!content) {
-		const ifNoPage = usePreload()
-	}
+	usePreload()
 
 	const headerCard = useHeaderCard(createAt)
 

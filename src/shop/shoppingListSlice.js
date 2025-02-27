@@ -52,16 +52,17 @@ const shoppingListSlice = createSlice({
 		},
 		changeItem: (state, action) => {
 			const { idPage, id } = action.payload
+			console.log('{ idPage, id }', { idPage, id })
 			let changedItem = {}
 			for (const items of state.items) {
 				if (items.idPage === idPage) {
 					changedItem = items
 					let forChangeCategory = []
 					for (const categories of items.categories) {
-						const items = categories.items.map(i => {
+						const itemsDto = categories.itemsDto.map(i => {
 							return i.id === id ? { ...i, isBought: !i.isBought } : i
 						})
-						let newCategories = { ...categories, items: items }
+						let newCategories = { ...categories, itemsDto }
 						forChangeCategory.push(newCategories)
 					}
 					changedItem.categories = forChangeCategory
@@ -70,13 +71,15 @@ const shoppingListSlice = createSlice({
 			state.items = state.items.map(i => {
 				return i.idPage == idPage ? changedItem : i
 			})
+			console.log('changedItem', changedItem)
+			console.warn(state.items)
 		},
 		editItem: (state, action) => {
 			const { idPage, idItem, newContent } = action.payload
 			for (const items of state.items) {
 				if (items.idPage === idPage) {
 					for (const categories of items.categories) {
-						const product = categories.items.find(item => item.id === idItem)
+						const product = categories.itemsDto.find(item => item.id === idItem)
 						if (product) {
 							product.content = newContent
 						}

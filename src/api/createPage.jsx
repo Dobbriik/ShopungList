@@ -3,22 +3,22 @@ import filterDefault from './filterDefault'
 
 export const createPage = async prompt => {
 	try {
-		const response = await api.post('/pages', { prompt })
+		const response = await api.post('/pages/generate', { prompt })
 
-		console.warn(location)
-		const list = filterDefault(response.data.categories)
+		console.warn(response)
+		// const list = filterDefault(response.data.categories)
 		const result = {
 			idPage: response.data.id,
-			categories: [],
+			categories: response.data.categoriesDto,
 			createdAt: response.data.createdAt,
 		}
 
-		for (const element of list) {
-			result.categories = [
-				...result.categories,
-				{ category: element.name, items: getItems(element.items) },
-			]
-		}
+		// for (const element of list) {
+		// 	result.categories = [
+		// 		...result.categories,
+		// 		{ category: element.name, items: getItems(element.items) },
+		// 	]
+		// }
 
 		return result
 	} catch (error) {

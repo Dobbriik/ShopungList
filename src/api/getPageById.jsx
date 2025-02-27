@@ -4,20 +4,13 @@ export const getPageById = async id => {
 	try {
 		const response = await api.get(`/pages/${id}`)
 		console.warn('get', response)
-		const list = filterDefault(response.data.categories)
 
 		const result = {
 			idPage: response.data.id,
-			categories: [],
+			categories: response.data.categoriesDto,
 			createdAt: response.data.createdAt,
 		}
 
-		for (const element of list) {
-			result.categories = [
-				...result.categories,
-				{ category: element.name, items: getItems(element.items) },
-			]
-		}
 		return result
 	} catch (error) {
 		console.error('Ошибка при получении страницы:', error)
