@@ -1,23 +1,27 @@
 import { useTranslation } from 'react-i18next'
 import style from './InputAddItem.module.scss'
 import { useState } from 'react'
-import { Select, Space } from 'antd'
+import { Select } from 'antd'
 
-function InputAddItem({ data, id }) {
+function InputAddItem({ data, id, addNewItem }) {
 	const { t } = useTranslation()
 	const [value, setValue] = useState('')
-	const [select, setSelect] = useState('')
-	console.log(data)
+	const [select, setSelect] = useState(t('Category'))
 	const handleClick = () => {
-		if (value && select && value) {
-			console.warn('add', id, select, value)
+		if (value && select) {
+			console.warn('add', select, value)
+			addNewItem(select, value)
+			setValue('')
+			setSelect(t('Category'))
 		}
 	}
+	let option = []
+	if (data) {
+		option = data.categories.map((item, i) => {
+			return { value: item.id, label: item.name }
+		})
+	}
 
-	const option = data.categories.map((item, i) => {
-		return { value: item.category, label: item.category }
-	})
-	console.log(option)
 	return (
 		<div className={style.container}>
 			<input
@@ -28,7 +32,7 @@ function InputAddItem({ data, id }) {
 			/>
 
 			<Select
-				defaultValue={t('Category')}
+				value={select}
 				name=''
 				id=''
 				className={style.select}

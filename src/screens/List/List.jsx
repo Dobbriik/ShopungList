@@ -7,6 +7,7 @@ import {
 	usePreload,
 	useCreateContentInStore,
 } from './hooksForList'
+import useAddNewItem from './hooksForList/useAddNewItem'
 
 function List() {
 	const { data, id, content, createAt } = useCreateContentInStore()
@@ -15,11 +16,13 @@ function List() {
 
 	const headerCard = useHeaderCard(createAt)
 
+	const addNewItem = useAddNewItem()
+
 	return (
 		<Container className={style.container}>
 			{headerCard}
 			<div className={style.list}>{content}</div>
-			{/* <InputAddItem data={data} id={id} /> */}
+			<InputAddItem data={data} id={id} addNewItem={addNewItem} />
 		</Container>
 	)
 }

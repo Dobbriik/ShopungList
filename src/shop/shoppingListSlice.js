@@ -3,11 +3,20 @@ import { createPage } from '../api/createPage.jsx'
 import { getPageById } from '../api/getPageById.jsx'
 import { updateStatus } from '../api/updateStatus.jsx'
 import { editItemApi } from '../api/editItemApi.jsx'
+import { addNewItem } from '../api/addNewItem.jsx'
 
 export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
 	async prompt => {
 		const data = await createPage(prompt)
+		return { ...data }
+	}
+)
+
+export const postAddNewItem = createAsyncThunk(
+	'shoppingList/postAddNewItem',
+	async ({ id, content }) => {
+		const data = await addNewItem({ id, content })
 		return { ...data }
 	}
 )
@@ -117,6 +126,16 @@ const shoppingListSlice = createSlice({
 			.addCase(getShoppingList.rejected, (state, action) => {
 				state.loading = false
 				state.error = action.error.message
+			})
+			.addCase(postAddNewItem.pending, state => {
+				state.loading = true
+				state.error = null
+			})
+			.addCase(postAddNewItem.fulfilled, (state, action) => {
+				state.loading = false
+			})
+			.addCase(postAddNewItem.rejected, (state, action) => {
+				state.loading = false
 			})
 	},
 })
