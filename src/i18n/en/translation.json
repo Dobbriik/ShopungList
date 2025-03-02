@@ -8,5 +8,9 @@
 	"Generate a list": "Generate a list",
 	"Select Cart": "Select Cart",
 	"Add": "Add",
-	"Category": "Category"
+	"Category": "Category",
+	"default": "Other products",
+	"add a new product to the category...": "Add a new product to the category...",
+	"Other": "Other",
+	"Please enter the names of the products, their quantity or weight.": "Please enter the names of the products, their quantity or weight."
 }

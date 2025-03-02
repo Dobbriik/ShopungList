@@ -1,4 +1,4 @@
-import useEditItems from '../../../hooks/useEditItems'
+import useEditItems from '../../../../../shared/hooks/useEditItems'
 
 function useHandleClickSave(idPage) {
 	const editItems = useEditItems()

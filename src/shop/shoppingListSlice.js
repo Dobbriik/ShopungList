@@ -4,6 +4,7 @@ import { getPageById } from '../api/getPageById.jsx'
 import { updateStatus } from '../api/updateStatus.jsx'
 import { editItemApi } from '../api/editItemApi.jsx'
 import { addNewItem } from '../api/addNewItem.jsx'
+import { deleteItem } from '../api/deleteItem.jsx'
 
 export const postShoppingList = createAsyncThunk(
 	'shoppingList/postShoppingList',
@@ -15,9 +16,9 @@ export const postShoppingList = createAsyncThunk(
 
 export const postAddNewItem = createAsyncThunk(
 	'shoppingList/postAddNewItem',
-	async ({ id, content }) => {
+	async ({ id, content, idPage }) => {
 		const data = await addNewItem({ id, content })
-		return { ...data }
+		return { data, idPage, id }
 	}
 )
 
@@ -44,6 +45,11 @@ export const postUpdateStatus = createAsyncThunk(
 	}
 )
 
+export const delItem = createAsyncThunk('shoppingList/delItem', async id => {
+	const data = await deleteItem(id)
+	return data
+})
+
 const shoppingListSlice = createSlice({
 	name: 'shoppingList',
 	initialState: {
@@ -56,8 +62,26 @@ const shoppingListSlice = createSlice({
 		addItem: (state, action) => {
 			state.items.push(action.payload)
 		},
-		removeItem: (state, action) => {
-			state.items = state.items.filter((_, i) => i !== action.payload)
+		removeItemElement: (state, action) => {
+			const { idPage, idCategory, id } = action.payload
+			console.warn({ idPage, idCategory, id })
+			state.items = state.items.map(item => {
+				if (item.idPage === idPage) {
+					const newItem = { ...item }
+
+					newItem.categories = newItem.categories.map(category => {
+						if (category.id === idCategory) {
+							return {
+								...category,
+								itemsDto: category.itemsDto.filter(i => i.id !== id),
+							}
+						}
+						return category
+					})
+					return newItem
+				}
+				return item
+			})
 		},
 		changeItem: (state, action) => {
 			const { idPage, id } = action.payload
@@ -132,14 +156,26 @@ const shoppingListSlice = createSlice({
 				state.error = null
 			})
 			.addCase(postAddNewItem.fulfilled, (state, action) => {
+				const { data, idPage, id } = action.payload
+				console.log('{data,idPage}', { data, idPage })
+				for (const items of state.items) {
+					if (items.idPage === idPage) {
+						for (const categories of items.categories) {
+							if (categories.id === id) {
+								categories.itemsDto.push(data)
+							}
+						}
+					}
+				}
 				state.loading = false
 			})
 			.addCase(postAddNewItem.rejected, (state, action) => {
 				state.loading = false
+				state.error = action.error.message
 			})
 	},
 })
 
-export const { addItem, removeItem, changeItem, editItem } =
+export const { addItem, removeItemElement, changeItem, editItem } =
 	shoppingListSlice.actions
 export default shoppingListSlice.reducer

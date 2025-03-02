@@ -15,7 +15,7 @@ function useHeaderCard(requestId) {
 			<div className={style.shop}>
 				<ShoppingCart />
 				<h3 className={style.title}>{t('Shopping list')}</h3>
-				<p className={style.date}>{formattedDate}</p>
+				<p className={style.date}>{`${formattedDate}`}</p>
 			</div>
 			<div>
 				<button className={style.btn} onClick={handleCopy}>

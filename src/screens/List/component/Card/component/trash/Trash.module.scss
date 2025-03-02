@@ -1,0 +1,13 @@
+.trash {
+	transition: all 0.2s ease;
+	margin: 0 0.2rem;
+	color: black;
+
+	&:hover {
+		color: red;
+	}
+}
+
+.trashOff {
+	display: none;
+}

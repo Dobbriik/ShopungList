@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { changeItem } from '../../../../shop/shoppingListSlice'
+import { changeItem } from '../../../../../shop/shoppingListSlice'
 
 function useToggleStatus(idPage, data) {
 	const [ids, setIds] = useState([])

@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import usePencil from './hooks/usePencil'
 import style from './ItemElement.module.scss'
-import ChangePencil from '../changePencil/ChangePencil'
-import InputText from '../input/InputText'
+import ChangePencil from './component/ChangePencil/ChangePencil'
+import InputText from '../Card/component/input/InputText'
 import { Checkbox } from 'antd'
 import useHandleClickSave from './hooksItem/useHandleClickSave'
 import useToggleStatus from './hooksItem/useToggleStatus'
 import { useDispatch } from 'react-redux'
-import { postUpdateStatus } from '../../../shop/shoppingListSlice'
+import { postUpdateStatus } from '../../../../shop/shoppingListSlice'
+import Trash from './component/trash/Trash'
+import useDeleteItem from './hooksItem/useDeleteItem'
 
 function ItemElement({ idPage, item, data }) {
 	const text = item.content.charAt(0).toUpperCase() + item.content.slice(1)
@@ -18,6 +20,7 @@ function ItemElement({ idPage, item, data }) {
 	const handleClickSave = useHandleClickSave(idPage)
 	const { handleChangeIds, handleCheckboxChange, ids, setIds } =
 		useToggleStatus(idPage, data)
+	const delItem = useDeleteItem()
 
 	useEffect(() => {
 		if (debounceTimeout) {
@@ -80,7 +83,13 @@ function ItemElement({ idPage, item, data }) {
 					handleClickSave(event, item.id, refInput)
 				}}
 			/>
-			<div className={style.savePencil}>
+			<div className={`${style.savePencil} ${click ? style.offDell : ''}`}>
+				<Trash
+					click={click}
+					onClick={() => {
+						delItem(item.id, idPage, data.id)
+					}}
+				/>
 				<ChangePencil
 					onClick={() => {
 						if (!click) {

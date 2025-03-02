@@ -1,0 +1,99 @@
+.container {
+	display: flex;
+	gap: 1rem;
+	width: 100%;
+}
+
+.wrap {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+}
+
+.input {
+	flex: 1;
+	transition: all 0.2s ease;
+	border: 1px solid #e5e7eb;
+	border-radius: 0.75rem;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+}
+
+.input:focus {
+	outline: none;
+	border-color: #9333ea;
+}
+
+.select {
+	transition: all 0.2s ease;
+	box-sizing: border-box;
+	border: 0.1px solid #d9d9d900;
+	border-radius: 0.75rem;
+	height: auto;
+	& :first-child {
+		border-radius: 0.75rem;
+	}
+}
+
+.option {
+	cursor: pointer;
+	line-height: 2rem;
+}
+
+.btn {
+	transition: all 0.2s ease;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.75rem;
+	background: #7c3aed;
+	padding: 0.75rem 1.5rem;
+	color: white;
+}
+
+.btn:hover {
+	background: #9333ea;
+}
+
+.selectRed {
+	.select {
+		border: 1px solid red;
+	}
+}
+
+.inputRed {
+	.input {
+		border: 1px solid red;
+	}
+}
+
+@media (width < 53.125rem) {
+	.input {
+	}
+	.btn {
+		padding: 0.3rem 0.75rem;
+		height: 100%;
+	}
+	.select {
+		height: 100%;
+	}
+}
+
+.text {
+	display: none;
+}
+
+@media (width < 40.625rem) {
+	.container {
+		flex-direction: column;
+	}
+	.wrap {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		align-self: end;
+		height: 45px;
+	}
+	.text {
+		display: block;
+	}
+}

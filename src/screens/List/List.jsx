@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
 import Container from '../../shared/components/container/Container'
 import style from './List.module.scss'
-import InputAddItem from './component/InputAddItem'
+import InputAddItem from './component/input/InputAddItem'
 import {
 	useHeaderCard,
 	usePreload,
